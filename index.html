@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ONURB - Redação Paraná</title>
+    <link rel="icon" href="https://static.wikia.nocookie.net/bb9e0e0f-96b2-4245-9568-4a0eba75ced7/scale-to-width/755">
     <style>
         * {
             margin: 0;
@@ -13,10 +14,16 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #122992 0%, #04396b 100%);
+            background: 
+                linear-gradient(135deg, rgba(0, 0, 0, 0.164) 0%, rgba(0, 0, 0, 0) 100%),
+                url('https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3bmIwd2lreDI5NGVvaWd1eGVjejMxeGRpMWpncHN5aTdvdXB3ZjhwciZlcD12MV9naWZzX3NlYXJjaCZjdD1n/cLM83RvATUc1E0SbjA/giphy.gif');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
             min-height: 100vh;
             padding: 20px;
-            color: #333;
+            color: #ffffff;
         }
 
         .container {
@@ -25,7 +32,7 @@
         }
 
         .header {
-            background: white;
+            background: #2e2b2e;
             padding: 30px;
             border-radius: 15px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.1);
@@ -34,21 +41,21 @@
         }
 
         .header h1 {
-            color: #667eea;
+            color: #ffffff;
             font-size: 2em;
             margin-bottom: 10px;
         }
 
         .header p {
-            color: #666;
+            color: #0867e2;
             font-size: 1.1em;
         }
 
         .card {
-            background: white;
+            background: #2e2b2e;
             padding: 30px;
             border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 40px rgb(49, 83, 231);
             margin-bottom: 20px;
         }
 
@@ -60,13 +67,13 @@
             display: block;
             margin-bottom: 8px;
             font-weight: 600;
-            color: #555;
+            color: #ffffff;
         }
 
         .input-group input, .input-group select, .input-group textarea {
             width: 100%;
             padding: 12px;
-            border: 2px solid #e0e0e0;
+            border: 2px solid #006999;
             border-radius: 8px;
             font-size: 14px;
             transition: all 0.3s;
@@ -75,7 +82,7 @@
 
         .input-group input:focus, .input-group select:focus, .input-group textarea:focus {
             outline: none;
-            border-color: #667eea;
+            border-color: #1d4ac5;
         }
 
         .input-group textarea {
@@ -95,23 +102,23 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: linear-gradient(135deg, #000000 0%, #000000 100%);
+            color: rgb(255, 255, 255);
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 5px 20px rgba(65, 15, 11, 0.452);
         }
 
         .btn-secondary {
-            background: #f0f0f0;
+            background: #09189c;
             color: #333;
             margin-top: 10px;
         }
 
         .btn-secondary:hover {
-            background: #e0e0e0;
+            background: #092c8d;
         }
 
         .btn:disabled {
@@ -120,23 +127,23 @@
         }
 
         .redacao-item {
-            background: #f8f9fa;
+            background: #31353a;
             padding: 20px;
             border-radius: 10px;
             margin-bottom: 15px;
-            border-left: 4px solid #667eea;
+            border-left: 4px solid #2040a8;
             cursor: pointer;
             transition: all 0.3s;
         }
 
         .redacao-item:hover {
-            background: #e9ecef;
+            background: #393c3f;
             transform: translateX(5px);
         }
 
         .redacao-item.selected {
-            background: #667eea;
-            color: white;
+            background: #ffffff;
+            color: rgb(255, 255, 255);
         }
 
         .redacao-item h3 {
@@ -160,7 +167,7 @@
         }
 
         .status-aberto { background: #4CAF50; color: white; }
-        .status-rascunho { background: #FFC107; color: #333; }
+        .status-rascunho { background: #003f72; color: #333; }
         .status-correcao { background: #FF9800; color: white; }
 
         .alert {
@@ -183,7 +190,7 @@
         .alert-error {
             background: #f8d7da;
             color: #721c24;
-            border-left: 4px solid #dc3545;
+            border-left: 4px solid #ffffff;
         }
 
         .alert-warning {
@@ -204,8 +211,8 @@
         }
 
         .spinner {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #667eea;
+            border: 4px solid #0742b1;
+            border-top: 4px solid #ffffff;
             border-radius: 50%;
             width: 50px;
             height: 50px;
@@ -227,7 +234,7 @@
         }
 
         .progress-fill {
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(90deg, #000000 0%, #000000 100%);
             height: 100%;
             transition: width 0.3s;
             display: flex;
@@ -280,7 +287,7 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background: #e0e0e0;
+            background: #153eaf;
             color: #666;
             display: inline-flex;
             align-items: center;
@@ -290,7 +297,7 @@
         }
 
         .step.active .step-number {
-            background: #667eea;
+            background: #ffffff;
             color: white;
         }
 
@@ -308,24 +315,24 @@
 
         .api-config h4 {
             margin-bottom: 10px;
-            color: #667eea;
+            color: #ffffff;
         }
 
         .token-section {
-            background: #fff3cd;
+            background: #252325;
             padding: 15px;
             border-radius: 8px;
             margin-bottom: 15px;
-            border-left: 4px solid #ffc107;
+            border-left: 4px solid #118dd4;
         }
 
         .token-section h4 {
-            color: #856404;
+            color: #020202;
             margin-bottom: 10px;
         }
 
         small {
-            color: #666;
+            color: #ffffff;
             display: block;
             margin-top: 5px;
         }
@@ -360,17 +367,17 @@
             padding: 10px 20px;
             border-radius: 50px;
             cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 5px 15px rgba(255, 11, 11, 0.3);
             z-index: 1000;
             font-weight: 600;
         }
 
         .debug-btn:hover {
-            background: #5568d3;
+            background: #ff0000;
         }
 
         kbd {
-            background: #f0f0f0;
+            background: #ffffff;
             border: 1px solid #ccc;
             border-radius: 3px;
             padding: 2px 6px;
@@ -381,8 +388,8 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>🎓 Automação Redação Paraná</h1>
-            <p>Gere e envie suas redações automaticamente com IA</p>
+            <h1>Redação Paraná</h1>
+            <p>Louvado seja o Senhor Jesus pela Tecnologia</p>
         </div>
 
         <div id="alertBox" class="alert"></div>
@@ -391,14 +398,14 @@
         <div id="debugConsole" class="card hidden">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
                 <h3>🐛 Console de Debug</h3>
-                <button onclick="document.getElementById('debugConsole').classList.add('hidden')" style="background: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer;">Fechar</button>
+                <button onclick="document.getElementById('debugConsole').classList.add('hidden')" style="background: #dc3545; color: rgb(255, 0, 0); border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer;">Fechar</button>
             </div>
             <div id="debugOutput" style="font-size: 12px; line-height: 1.6;"></div>
         </div>
 
         <!-- Etapa 1: Autenticação -->
         <div id="step1" class="card">
-            <h2 style="margin-bottom: 20px;">🔐 Autenticação</h2>
+            <h2 style="margin-bottom: 20px;">Autenticação</h2>
             
             <div class="token-section">
                 <h4>📋 Como pegar os tokens:</h4>
@@ -413,20 +420,20 @@
                     <li>Procure a chave <code>token</code> e copie o <strong>valor completo</strong></li>
                     <li>O token começa com <code>eyJ</code> e tem 3 partes separadas por pontos</li>
                 </ol>
-                <div style="background: #fff; padding: 10px; border-radius: 5px; margin-top: 10px;">
+                <div style="background: #161516; padding: 10px; border-radius: 5px; margin-top: 10px;">
                     <strong>💡 Dica:</strong> O token expira após algumas horas. Se der erro de autenticação, pegue um novo token!
                 </div>
             </div>
 
             <div class="input-group">
-                <label>🔗 Link completo da plataforma (opcional):</label>
-                <textarea id="linkInput" placeholder="https://redacao.pr.gov.br/#state=8&access_token=ya29..."></textarea>
+                <label>  Link completo da plataforma (opcional):</label>
+                <textarea id="linkInput" placeholder="https://redacao.pr.gov.br/#state=8&access_token=ya29"></textarea>
                 <small>Cole aqui o link completo da URL quando estiver logado na plataforma</small>
             </div>
 
             <div class="input-group">
-                <label>🎫 Bearer Token (JWT) - Obrigatório:</label>
-                <textarea id="bearerInput" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."></textarea>
+                <label>Bearer Token (JWT) - Obrigatório:</label>
+                <textarea id="bearerInput" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"></textarea>
                 <small>Cole aqui o Bearer Token que você copiou do Local Storage</small>
             </div>
 
@@ -435,20 +442,20 @@
                 <div class="input-group">
                     <label>Provedor de IA:</label>
                     <select id="aiProvider">
-                        <option value="groq">Groq (Gratuito - Recomendado)</option>
+                        <option value="groq">Groq (Recomendado)</option>
                         <option value="openai">OpenAI</option>
                         <option value="anthropic">Anthropic Claude</option>
                     </select>
                 </div>
                 <div class="input-group">
                     <label>API Key (deixe vazio para texto de exemplo):</label>
-                    <input type="password" id="apiKey" placeholder="sk-...">
-                    <small>🔗 Groq gratuito: <a href="https://console.groq.com/" target="_blank">console.groq.com</a></small>
+                    <input type="password" id="apiKey" placeholder="sk-">
+                    <small>Groq gratuito: <a href="https://console.groq.com/" target="_blank">console.groq.com</a></small>
                 </div>
             </div>
 
             <button class="btn btn-primary" onclick="authenticate()">
-                🚀 Conectar e Buscar Redações
+                Conectar e Buscar Redações
             </button>
         </div>
 
@@ -490,7 +497,7 @@
 
         <!-- Etapa 4: Progresso de Envio -->
         <div id="step4" class="card hidden">
-            <h2 style="margin-bottom: 20px;">🚀 Enviando Redação</h2>
+            <h2 style="margin-bottom: 20px;">Enviando Redação</h2>
             
             <div class="step-indicator">
                 <div class="step" id="stepSave">
@@ -740,8 +747,7 @@
                 container.appendChild(div);
             });
         }
-
-        async function selecionarRedacao(redacao) {
+async function selecionarRedacao(redacao) {
             redacaoSelecionada = redacao;
             
             showAlert(`📖 Carregando: ${redacao.descTema}...`, 'info');
@@ -1386,3 +1392,4 @@ IMPORTANTE:
     </script>
 </body>
 </html>
+       
