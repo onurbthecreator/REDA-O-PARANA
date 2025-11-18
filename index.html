@@ -21,8 +21,8 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: 
-                linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(0, 0, 0, 0.1) 100%),
-                url('https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3Nmw2ZjA0Y2pnMzVreTYzb3c2ZzUxbGVqamgwMWI1ZzFuYXFwZWk5MSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/nURzWHsOTpDDa/giphy.gif');
+                linear-gradient(135deg, rgba(63, 63, 63, 0.432) 100%, rgba(0, 0, 0, 0.432) 100%),
+                url('https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHFienliam50NXo0NzBvN3pvYnZuZ29xaTk4Mm5wdmJ4dzcxZGtkayZlcD12MV9naWZzX3NlYXJjaCZjdD1n/kj5eW9ype6EV2/giphy.gif');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -46,23 +46,23 @@
            🎨 Personalize aqui: cor de fundo, bordas, sombras
            =================================== */
         .header {
-            background: rgba(2, 0, 2, 0.26); /* ← TRANSPARÊNCIA: 0.75 = 75% opaco */
+            background:rgba(0, 0, 0, 0.582);
             padding: 30px;
             border-radius: 15px;
             box-shadow: 0 10px 40px rgb(252, 252, 252);
             text-align: center;
             margin-bottom: 30px;
-            border: 2px solid rgba(0, 0, 0, 0); /* ← COR DA BORDA */
+            border: 2px solid rgba(0, 0, 0, 0);
         }
 
         .header h1 {
-            color: #ffffff; /* ← COR DO TÍTULO */
+            color: #ffffff;
             font-size: 2em;
             margin-bottom: 10px;
         }
 
         .header p {
-            color: #0867e2; /* ← COR DO SUBTÍTULO */
+            color: #0867e2;
             font-size: 1.1em;
         }
 
@@ -71,12 +71,12 @@
            🎨 Personalize aqui: transparência, bordas, sombras
            =================================== */
         .card {
-            background: rgba(0, 0, 0, 0.493); /* ← TRANSPARÊNCIA: 0.70 = 70% opaco */
+            background: rgba(0, 0, 0, 0.582);
             padding: 30px;
             border-radius: 15px;
-            box-shadow: 0 10px 40px rgb(0, 0, 0);
+            box-shadow: 0 10px 40px (0, 0, 0, 0.582);
             margin-bottom: 20px;
-            border: 2px solid rgba(0, 0, 0, 0); /* ← COR DA BORDA */
+            border: 2px solid rgba(0, 0, 0, 0);
         }
 
         /* ===================================
@@ -90,25 +90,25 @@
             display: block;
             margin-bottom: 8px;
             font-weight: 600;
-            color: #ffffff; /* ← COR DOS RÓTULOS */
+            color: #ffffff;
         }
 
         .input-group input, .input-group select, .input-group textarea {
             width: 100%;
             padding: 12px;
-            border: 2px solid #332e2e; /* ← COR DA BORDA DOS INPUTS */
+            border: 2px solid #332e2e;
             border-radius: 8px;
             font-size: 14px;
             transition: all 0.3s;
             font-family: 'Courier New', monospace;
-            background: rgba(0, 0, 0, 0.432); /* ← FUNDO DOS INPUTS (transparência) */
-            color: #ffffff; /* ← COR DO TEXTO */
+            background: rgba(0, 0, 0, 0.432);
+            color: #ffffff;
         }
 
         .input-group input:focus, .input-group select:focus, .input-group textarea:focus {
             outline: none;
-            border-color: #2918c5; /* ← COR DA BORDA QUANDO FOCADO */
-            background: rgba(0, 0, 0, 0.623); /* ← FUNDO MAIS ESCURO QUANDO FOCADO */
+            border-color: #2918c5;
+            background: rgba(0, 0, 0, 0.623);
         }
 
         .input-group textarea {
@@ -131,20 +131,18 @@
             width: 100%;
         }
 
-        /* Botão Principal (Azul) */
         .btn-primary {
-            background: linear-gradient(135deg, #000000 0%, #113494 100%); /* ← GRADIENTE DO BOTÃO */
+            background: linear-gradient(135deg, #000000 0%, #113494 100%);
             color: white;
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgb(255, 255, 255); /* ← SOMBRA AO PASSAR O MOUSE */
+            box-shadow: 0 5px 20px rgb(255, 255, 255);
         }
 
-        /* Botão Secundário */
         .btn-secondary {
-            background: rgba(9, 24, 156, 0.70); /* ← FUNDO COM TRANSPARÊNCIA */
+            background: rgba(9, 24, 156, 0.70);
             color: white;
             margin-top: 10px;
         }
@@ -163,17 +161,17 @@
            🎨 Personalize aparência dos cards de redação
            =================================== */
         .redacao-item {
-            background: rgba(49, 53, 58, 0.75); /* ← TRANSPARÊNCIA DOS CARDS DE REDAÇÃO */
+            background: rgba(49, 53, 58, 0.75);
             padding: 20px;
             border-radius: 10px;
             margin-bottom: 15px;
-            border-left: 4px solid #2040a8; /* ← BORDA ESQUERDA COLORIDA */
+            border-left: 4px solid #2040a8;
             cursor: pointer;
             transition: all 0.3s;
         }
 
         .redacao-item:hover {
-            background: rgba(57, 60, 63, 0.85); /* ← FUNDO AO PASSAR O MOUSE */
+            background: rgba(57, 60, 63, 0.85);
             transform: translateX(5px);
             box-shadow: 0 5px 15px rgba(32, 64, 168, 0.4);
         }
@@ -203,9 +201,9 @@
             margin-right: 10px;
         }
 
-        .status-aberto { background: #4CAF50; color: white; } /* ← Verde */
-        .status-rascunho { background: #FFC107; color: #333; } /* ← Amarelo */
-        .status-correcao { background: #FF9800; color: white; } /* ← Laranja */
+        .status-aberto { background: #4CAF50; color: white; }
+        .status-rascunho { background: #FFC107; color: #333; }
+        .status-correcao { background: #FF9800; color: white; }
 
         /* ===================================
            ALERTAS/NOTIFICAÇÕES
@@ -257,7 +255,7 @@
 
         .spinner {
             border: 4px solid rgba(7, 66, 177, 0.3);
-            border-top: 4px solid #ffffff; /* ← COR DO SPINNER */
+            border-top: 4px solid #ffffff;
             border-radius: 50%;
             width: 50px;
             height: 50px;
@@ -275,7 +273,7 @@
            🎨 Personalize cores da barra de progresso
            =================================== */
         .progress-bar {
-            background: rgba(224, 224, 224, 0.3); /* ← FUNDO DA BARRA */
+            background: rgba(224, 224, 224, 0.3);
             border-radius: 10px;
             height: 30px;
             overflow: hidden;
@@ -283,7 +281,7 @@
         }
 
         .progress-fill {
-            background: linear-gradient(90deg, #0867e2 0%, #1d4ac5 100%); /* ← GRADIENTE DA BARRA */
+            background: linear-gradient(90deg, #0867e2 0%, #1d4ac5 100%);
             height: 100%;
             transition: width 0.3s;
             display: flex;
@@ -298,7 +296,7 @@
            =================================== */
         .word-count {
             text-align: right;
-            color: #ccc; /* ← COR DO TEXTO */
+            color: #ccc;
             font-size: 0.9em;
             margin-top: 5px;
         }
@@ -347,7 +345,7 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background: rgba(21, 62, 175, 0.5); /* ← FUNDO DO NÚMERO */
+            background: rgba(21, 62, 175, 0.5);
             color: #fff;
             display: inline-flex;
             align-items: center;
@@ -357,19 +355,19 @@
         }
 
         .step.active .step-number {
-            background: #0867e2; /* ← COR QUANDO ATIVO */
+            background: #0867e2;
             box-shadow: 0 0 20px rgba(8, 103, 226, 0.6);
         }
 
         .step.completed .step-number {
-            background: #28a745; /* ← COR QUANDO COMPLETO (Verde) */
+            background: #28a745;
         }
 
         /* ===================================
            CONFIGURAÇÃO DE API
            =================================== */
         .api-config {
-            background: rgba(0, 0, 0, 0.363); /* ← TRANSPARÊNCIA DA CAIXA DE API */
+            background: rgba(0, 0, 0, 0.363);
             padding: 15px;
             border-radius: 8px;
             margin-bottom: 20px;
@@ -378,18 +376,18 @@
 
         .api-config h4 {
             margin-bottom: 10px;
-            color: #ffffff; /* ← COR DO TÍTULO */
+            color: #ffffff;
         }
 
         /* ===================================
            SEÇÃO DE TOKEN
            =================================== */
         .token-section {
-            background: rgba(37, 35, 37, 0.65); /* ← TRANSPARÊNCIA DA SEÇÃO DE TOKEN */
+            background: rgba(37, 35, 37, 0.65);
             padding: 15px;
             border-radius: 8px;
             margin-bottom: 15px;
-            border-left: 4px solid #0867e2; /* ← BORDA ESQUERDA COLORIDA */
+            border-left: 4px solid #0867e2;
         }
 
         .token-section h4 {
@@ -408,7 +406,7 @@
 
         code {
             background: rgba(51, 51, 51, 0.8);
-            color: #0867e2; /* ← COR DO CÓDIGO */
+            color: #0867e2;
             padding: 2px 6px;
             border-radius: 4px;
             font-family: 'Courier New', monospace;
@@ -418,80 +416,60 @@
            CONSOLE DE DEBUG
            =================================== */
         #debugConsole {
-            background: rgba(0, 0, 0, 0.95); /* ← FUNDO DO CONSOLE */
-            color: #135013; /* ← COR DO TEXTO (Verde Matrix) */
+            background: rgba(0, 0, 0, 0.95);
+            color: #135013;
             font-family: 'Courier New', monospace;
             max-height: 300px;
             overflow-y: auto;
         }
 
         /* ===================================
-           BOTÕES DE CONTROLE (CANTO DIREITO)
+           BOTÕES DE CONTROLE (BARRA SUPERIOR)
            🎨 Personalize posição e aparência dos botões fixos
            =================================== */
         .control-buttons {
             position: fixed;
-            bottom: 20px; /* ← DISTÂNCIA DO FUNDO */
-            right: 20px; /* ← DISTÂNCIA DA DIREITA */
+            top: 0;
+            left: 0;
+            right: 0;
             display: flex;
-            flex-direction: column;
-            gap: 10px;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 0;
+            padding: 12px 20px;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
 
         .control-btn {
-            padding: 12px 20px;
+            padding: 8px 18px;
             border: none;
-            border-radius: 50px;
+            border-radius: 0;
             cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+            font-size: 13px;
+            background: transparent;
+            color: rgba(255, 255, 255, 0.8);
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            letter-spacing: 0.3px;
         }
 
-        /* Botão Debug (Roxo) */
-        .debug-btn {
-            background: #03011f;
-            color: white;
+        .control-btn:last-child {
+            border-right: none;
         }
 
-        .debug-btn:hover {
-            background: #03011f;
-            transform: scale(1.05);
+        .control-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
         }
 
-        /* Botão Trocar Fundo (Rosa/Vermelho) */
-        .bg-btn {
-            background: linear-gradient(135deg, #000000 0%, #030a44 100%);
-            color: white;
-        }
-
-        .bg-btn:hover {
-            background: linear-gradient(135deg, #000000 0%, #030a44 100%);
-            transform: scale(1.05);
-        }
-
-        /* Botão Home (Azul Claro) */
-        .home-btn {
-            background: linear-gradient(135deg, #000000 0%, #030a44 100%);
-            color: white;
-        }
-
-        .home-btn:hover {
-            background: linear-gradient(135deg, #000000 0%, #030a44 100%);
-            transform: scale(1.05);
-        }
-
-        /* Botão Zen (Verde Água/Rosa) */
-        .zen-btn {
-            background: linear-gradient(135deg, #000000 0%, #030a44 100%);
-            color: #333;
-        }
-
-        .zen-btn:hover {
-            background: linear-gradient(135deg, #000000 0%, #030a44 100%);
-            transform: scale(1.05);
+        /* Ajuste do container para não ficar atrás da barra */
+        .container {
+            padding-top: 60px;
         }
 
         /* Modo Zen */
@@ -502,7 +480,7 @@
         body.zen-mode .control-buttons {
             background: rgba(0, 0, 0, 0.3);
             padding: 10px;
-            border-radius: 20px;
+            border-radius: 12px;
             backdrop-filter: blur(10px);
         }
 
@@ -648,8 +626,6 @@
         
         <!-- ================================================================
              📍 SEÇÃO: CABEÇALHO (HEADER)
-             Localização: /header
-             Personalize: Título e subtítulo do site
              ================================================================ -->
         <div class="header">
             <h1>🎓 Redação Paraná</h1>
@@ -658,13 +634,11 @@
 
         <!-- ================================================================
              📍 SEÇÃO: CAIXA DE ALERTAS
-             Localização: /alertas
              ================================================================ -->
         <div id="alertBox" class="alert"></div>
 
         <!-- ================================================================
              📍 SEÇÃO: CONSOLE DE DEBUG
-             Localização: /debug
              ================================================================ -->
         <div id="debugConsole" class="card hidden">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
@@ -676,8 +650,6 @@
 
         <!-- ================================================================
              📍 ETAPA 0: TELA INICIAL (WELCOME SCREEN)
-             Localização: /welcome
-             Personalize: Mensagem de boas-vindas e features
              ================================================================ -->
         <div id="welcomeScreen" class="card welcome-screen">
             <h2>✨ Bem-vindo ao Automatizador de Redações ✨</h2>
@@ -702,15 +674,13 @@
                 Iniciar
             </button>
 
-            <div style="margin-top: 40px; color: #666; font-size: 0.9em;">
+            <div style="margin-top: 40px; color: #000000; font-size: 0.9em;">
                 <p>Desenvolvido com ❤️ e 💻 por Bruno & Maria & Ana</p>
             </div>
         </div>
 
         <!-- ================================================================
              📍 ETAPA 1: AUTENTICAÇÃO
-             Localização: /auth ou /autenticacao ou /bearer
-             Personalize: Campos de token e API keys
              ================================================================ -->
         <div id="step1" class="card hidden">
             <h2 style="margin-bottom: 20px;">🔐 Autenticação</h2>
@@ -729,13 +699,6 @@
                 </div>
             </div>
 
-            <!-- Campo do link (opcional) -->
-            <div class="input-group">
-                <label>🔗 Link completo (opcional):</label>
-                <textarea id="linkInput" placeholder="https://redacao.pr.gov.br/#state=8&access_token=ya29..."></textarea>
-                <small>Cole o link completo da URL</small>
-            </div>
-
             <!-- Campo do Bearer Token (obrigatório) -->
             <div class="input-group">
                 <label>🎫 Bearer Token (Obrigatório):</label>
@@ -749,7 +712,7 @@
                 <div class="input-group">
                     <label>Provedor:</label>
                     <select id="aiProvider">
-                        <option value="groq">Groq (Gratuito - Recomendado)</option>
+                        <option value="groq">Groq</option>
                         <option value="openai">OpenAI</option>
                         <option value="anthropic">Claude</option>
                     </select>
@@ -769,7 +732,6 @@
 
         <!-- ================================================================
              📍 ETAPA 2: SELEÇÃO DE REDAÇÃO
-             Localização: /selecao ou /redacoes
              ================================================================ -->
         <div id="step2" class="card hidden">
             <h2 style="margin-bottom: 20px;">📋 Escolha uma Redação</h2>
@@ -778,7 +740,6 @@
 
         <!-- ================================================================
              📍 ETAPA 3: EDIÇÃO DA REDAÇÃO
-             Localização: /edicao ou /texto
              ================================================================ -->
         <div id="step3" class="card hidden">
             <h2 style="margin-bottom: 20px;">📝 Redação Gerada</h2>
@@ -814,7 +775,6 @@
 
         <!-- ================================================================
              📍 ETAPA 4: PROGRESSO DO ENVIO
-             Localização: /envio ou /progresso
              ================================================================ -->
         <div id="step4" class="card hidden">
             <h2 style="margin-bottom: 20px;">🚀 Enviando</h2>
@@ -853,54 +813,54 @@
 
     <!-- ====================================================================
          📍 SEÇÃO: BOTÕES DE CONTROLE FIXOS
-         Localização: /controles ou /botoes
-         Posição: Canto inferior direito
          ==================================================================== -->
     <div class="control-buttons">
-        <button class="control-btn home-btn" onclick="voltarParaHome()" title="Voltar para o início">
+        <button class="control-btn" onclick="voltarParaHome()" title="Voltar para o início">
             Home
         </button>
-        <button class="control-btn zen-btn" onclick="toggleZenMode()" title="Modo Zen - Só o GIF">
+        <button class="control-btn" onclick="toggleZenMode()" title="Modo Zen - Só o GIF">
             Relaxar
         </button>
-        <button class="control-btn bg-btn" onclick="trocarFundo()" title="Trocar fundo de gatinho">
+        <button class="control-btn" onclick="trocarFundo()" title="Trocar fundo de gatinho">
             Trocar de Fundo
         </button>
-        <button class="control-btn debug-btn" onclick="toggleDebug()" title="Abrir console de debug">
-            Debuga
+        <button class="control-btn" onclick="toggleDebug()" title="Abrir console de debug">
+            Debug
         </button>
     </div>
 
     <!-- ====================================================================
          📍 SEÇÃO: MENSAGEM DO MODO ZEN
-         Localização: /zen
          ==================================================================== -->
     <div class="zen-message">
         <div style="font-size: 3em; margin-bottom: 20px;">🧘✨</div>
-        <div>Modo Relaxado Ativado kkkkk</div>
+        <div>Modo Relaxado Ativado rs</div>
         <div style="font-size: 0.7em; margin-top: 15px; opacity: 0.8;">
-            Relaxe e aprecie o gatinho 🐱
+           
         </div>
         <div style="font-size: 0.6em; margin-top: 10px; opacity: 0.6;">
-            Clique em "🧘 Relaxar" novamente para voltar
+            Clique em "Relaxar" novamente para voltar
         </div>
     </div>
 
     <!-- ====================================================================
          📍 INÍCIO DO JAVASCRIPT
-         Localização: /script
          ==================================================================== -->
     <script>
         // ===== CONFIGURAÇÃO DOS FUNDOS =====
         const fundos = [
-            'https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3Nmw2ZjA0Y2pnMzVreTYzb3c2ZzUxbGVqamgwMWI1ZzFuYXFwZWk5MSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/nURzWHsOTpDDa/giphy.gif',
-            'https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3aHR2enp0MTQya3RtZHhsYXJrcm5idXZydmhyaXhhZWxzMHZobTUxaiZlcD12MV9naWZzX3JlbGF0ZWQmY3Q9Zw/w3J7mstYCISqs/giphy.gif',
-            // 🎨 ADICIONE MAIS GIFS DE GATINHO AQUI:
-            'https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif',
-            'https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif',
-            'https://media.giphy.com/media/mlvseq9yvZhba/giphy.gif',
-            'https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif',
-            // Adicione mais URLs aqui...
+            'https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3eHcwcHh1ZnZsdnVoMDVuY2lsZm1hZWIzMmcyOWNtM3NjYm1oM24yeiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/YFXg3ASJFWJrdlGqKg/giphy.gif',
+            'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcXdzdzd1aXdiaHdqa3U3eXZzMGpyeG1tc25tZmhseDNvMzJuNDRqcSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/lLGzvSHi8vrl6nRUlt/giphy.gif',
+            'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcXdzdzd1aXdiaHdqa3U3eXZzMGpyeG1tc25tZmhseDNvMzJuNDRqcSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/jU2nxeeL0pVgzJAOjq/giphy.gif',
+            'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcXdzdzd1aXdiaHdqa3U3eXZzMGpyeG1tc25tZmhseDNvMzJuNDRqcSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/OJYmB0SL4EVu8REklW/giphy.gif',
+            'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZTI0YnRoYWhudmZ5azV3OWNoNDNwbDE2c3N2bDJzcmxubWJ1eWJ5aCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/zymcMjtAPv3vbspgE2/giphy.gif',
+            'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbnphNGJ4MDJuNXVodnhwMWJrYndpNmlsZ2syZ2x6MmR1Y3o4YWNmZSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/WqSSfNu7llGiQ/giphy.gif',
+            'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcXJzNHZtbGJ1bWttYTN2aTVuZTRlZ2dvdWtmYW45dmltdTB0MDU1MSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/loLO30j5PEbLgAqt63/giphy.gif',
+            'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExeGxhaHAyaXF3aWNpejJ3ZjltYWxzYXlyeTFjcHlhdzRnMnRxd25ueCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/DnwkNBpY5oMeJ1Ag0Y/giphy.gif',
+            'https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3enFxeWQyZWFwbTBwcnA4OHptM2xqdWlwNHBoaHljbzhieTk4bmk4cSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/CYgP3aabbxrxVhVXc4/giphy.gif',
+            'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdWJ0cWZudHRicTJtZXo0ZzZqZXJ0MWkzZ2t6cjVsOHpsN3BidTk0YSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/j9FO7gir37IrYi4yZ4/giphy.gif',
+            'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHFienliam50NXo0NzBvN3pvYnZuZ29xaTk4Mm5wdmJ4dzcxZGtkayZlcD12MV9naWZzX3NlYXJjaCZjdD1n/kj5eW9ype6EV2/giphy.gif',
+
         ];
         
         let fundoAtual = 0;
@@ -916,12 +876,10 @@
         }
 
         function voltarParaHome() {
-            // Esconde todas as etapas
             document.getElementById('step1').classList.add('hidden');
             document.getElementById('step2').classList.add('hidden');
             document.getElementById('step3').classList.add('hidden');
             document.getElementById('step4').classList.add('hidden');
-            // Mostra a tela de boas-vindas
             document.getElementById('welcomeScreen').classList.remove('hidden');
             showAlert('🏠 Voltou para o início!', 'info');
         }
@@ -931,11 +889,9 @@
             const zenMsg = document.querySelector('.zen-message');
             
             if (isZenMode) {
-                // ATIVANDO modo Zen
                 console.log('🧘 Modo Zen ATIVADO');
                 document.getElementById('debugConsole').classList.add('hidden');
                 
-                // Mostra mensagem e esconde após 3 segundos
                 if (zenMsg) {
                     zenMsg.style.display = 'block';
                     zenMsg.style.animation = 'fadeIn 0.5s ease-in-out';
@@ -950,10 +906,8 @@
                     }, 3000);
                 }
             } else {
-                // DESATIVANDO modo Zen
                 console.log('🧘 Modo Zen DESATIVADO');
                 
-                // Esconde a mensagem imediatamente
                 if (zenMsg) {
                     zenMsg.style.display = 'none';
                 }
@@ -965,7 +919,7 @@
         function iniciarAutomacao() {
             document.getElementById('welcomeScreen').classList.add('hidden');
             document.getElementById('step1').classList.remove('hidden');
-            showAlert('✨ Vamos começar!', 'success');
+            showAlert('login', 'success');
         }
 
         // ===== VARIÁVEIS GLOBAIS =====
