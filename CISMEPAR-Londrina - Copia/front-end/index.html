@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CISMEPAR - Sistema de Exames</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- TELA DE LOGIN -->
+  <div id="loginScreen" class="login-screen">
+    <div class="login-box">
+      <div class="login-logo">CIS</div>
+      <h1 class="login-title">CISMEPAR</h1>
+      <p class="login-subtitle">Sistema de Gestão de Exames</p>
+      
+      <div id="loginError" class="error-msg hidden"></div>
+      
+      <form id="loginForm">
+        <div class="input-group">
+          <input type="email" id="loginEmail" placeholder="Email" required>
+        </div>
+        <div class="input-group">
+          <input type="password" id="loginSenha" placeholder="Senha" required>
+        </div>
+        <button type="submit" class="btn-login">Entrar</button>
+      </form>
+      
+      <p class="demo-hint">
+        Use as credenciais criadas no backend
+      </p>
+    </div>
+  </div>
+
+  <!-- APLICAÇÃO PRINCIPAL -->
+  <div id="app" class="hidden">
+    <!-- HEADER -->
+    <header class="header">
+      <button id="btnBack" class="btn-back hidden">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+        </svg>
+      </button>
+      
+      <div class="header-logo">CIS</div>
+      <div>
+        <div class="header-title">CISMEPAR - Sistema de Exames</div>
+        <div id="breadcrumb" class="header-breadcrumb"></div>
+      </div>
+      
+      <div class="header-actions">
+        <select id="filterMes" class="filter-select">
+          <option value="">Todos os meses</option>
+          <option value="Janeiro">Janeiro</option>
+          <option value="Fevereiro">Fevereiro</option>
+          <option value="Março">Março</option>
+          <option value="Abril">Abril</option>
+          <option value="Maio">Maio</option>
+          <option value="Junho">Junho</option>
+          <option value="Julho">Julho</option>
+          <option value="Agosto">Agosto</option>
+          <option value="Setembro">Setembro</option>
+          <option value="Outubro">Outubro</option>
+          <option value="Novembro">Novembro</option>
+          <option value="Dezembro">Dezembro</option>
+        </select>
+        
+        <button id="btnAdmin" class="btn-header hidden">⚙️ Admin</button>
+        <button id="btnUpload" class="btn-header hidden">➕ Enviar Exame</button>
+        <button id="btnUploadMassivo" class="btn-header hidden">📤 Upload Massivo</button>
+        <button id="btnExportar" class="btn-header hidden">📥 Exportar</button>
+        
+        <div class="user-info">
+          <div class="user-avatar" id="userAvatar"></div>
+          <div>
+            <div class="user-name" id="userName"></div>
+            <div class="user-role" id="userRole"></div>
+          </div>
+          <button id="btnLogout" class="btn-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="main-content">
+      <!-- LISTA DE EMPRESAS (Admin) -->
+      <div id="empresasView" class="hidden">
+        <div class="cards-grid" id="empresasGrid"></div>
+      </div>
+
+      <!-- LISTA DE CATEGORIAS -->
+      <div id="categoriasView" class="hidden">
+        <div class="cards-grid" id="categoriasGrid"></div>
+      </div>
+
+      <!-- LISTA DE EXAMES -->
+      <div id="examesView" class="hidden">
+        <div id="examesList"></div>
+      </div>
+
+      <!-- PAINEL ADMIN -->
+      <div id="adminView" class="hidden">
+        <div class="admin-section">
+          <h2 class="admin-title">Gerenciar Categorias de Exames</h2>
+          <div class="form-group">
+            <div style="display: flex; gap: 12px;">
+              <input type="text" id="novaCategoriaInput" class="form-input" placeholder="Nova categoria de exame" style="flex: 1;">
+              <button id="btnAddCategoria" class="btn-submit">Adicionar</button>
+            </div>
+          </div>
+          <div class="categoria-list" id="categoriasList"></div>
+        </div>
+
+        <div class="admin-section">
+          <h2 class="admin-title">Criar Nova Empresa</h2>
+          <form id="formNovaEmpresa">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Nome da Empresa *</label>
+                <input type="text" id="novaEmpresaNome" class="form-input" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">CNPJ</label>
+                <input type="text" id="novaEmpresaCNPJ" class="form-input" placeholder="00.000.000/0000-00">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Telefone</label>
+                <input type="text" id="novaEmpresaTelefone" class="form-input" placeholder="(00) 0000-0000">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Email</label>
+                <input type="email" id="novaEmpresaEmail" class="form-input">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Endereço</label>
+              <input type="text" id="novaEmpresaEndereco" class="form-input">
+            </div>
+            <button type="submit" class="btn-submit" style="width: 100%;">➕ Criar Empresa</button>
+          </form>
+        </div>
+
+        <div class="admin-section">
+          <h2 class="admin-title">Criar Novo Usuário</h2>
+          <form id="formNovoUsuario">
+            <div class="form-group">
+              <label class="form-label">Nome Completo *</label>
+              <input type="text" id="novoUsuarioNome" class="form-input" required>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Email *</label>
+                <input type="email" id="novoUsuarioEmail" class="form-input" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Senha *</label>
+                <input type="password" id="novoUsuarioSenha" class="form-input" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Tipo de Usuário *</label>
+                <select id="novoUsuarioTipo" class="form-select" required>
+                  <option value="empresa">Empresa</option>
+                  <option value="admin">Administrador</option>
+                </select>
+              </div>
+              <div class="form-group" id="selectEmpresaUsuario">
+                <label class="form-label">Empresa *</label>
+                <select id="novoUsuarioEmpresa" class="form-select"></select>
+              </div>
+            </div>
+            <button type="submit" class="btn-submit" style="width: 100%;">➕ Criar Usuário</button>
+          </form>
+        </div>
+
+        <div class="admin-section">
+          <h2 class="admin-title">Usuários Cadastrados</h2>
+          <div id="listaUsuarios"></div>
+        </div>
+      </div>
+
+      <!-- ESTADO VAZIO -->
+      <div id="emptyState" class="empty-state hidden">
+        <div class="empty-icon">📋</div>
+        <p>Nenhum exame encontrado</p>
+      </div>
+    </main>
+  </div>
+
+  <!-- MODAL UPLOAD/EDIÇÃO -->
+  <div id="modalExame" class="modal hidden">
+    <div class="modal-content">
+      <h2 class="modal-header" id="modalTitle">Enviar Novo Exame</h2>
+      <form id="formExame">
+        <div class="form-group">
+          <label class="form-label">Paciente</label>
+          <input type="text" id="examePaciente" class="form-input" required>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label">Categoria do Exame</label>
+          <select id="exameCategoria" class="form-select" required></select>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Mês</label>
+            <select id="exameMes" class="form-select" required>
+              <option value="Janeiro">Janeiro</option>
+              <option value="Fevereiro">Fevereiro</option>
+              <option value="Março">Março</option>
+              <option value="Abril">Abril</option>
+              <option value="Maio">Maio</option>
+              <option value="Junho">Junho</option>
+              <option value="Julho">Julho</option>
+              <option value="Agosto">Agosto</option>
+              <option value="Setembro">Setembro</option>
+              <option value="Outubro">Outubro</option>
+              <option value="Novembro">Novembro</option>
+              <option value="Dezembro">Dezembro</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Ano</label>
+            <input type="number" id="exameAno" class="form-input" value="2025" required>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label">Data do Exame</label>
+          <input type="date" id="exameData" class="form-input" required>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label">Observações</label>
+          <textarea id="exameObs" class="form-textarea"></textarea>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label">Arquivo PDF</label>
+          <div class="upload-area" id="uploadArea">
+            <div class="upload-icon">📎</div>
+            <p>Clique ou arraste o arquivo PDF aqui</p>
+            <p style="font-size: 12px; color: #666; margin-top: 8px;">Máximo: 10 MB</p>
+          </div>
+          <input type="file" id="examePDF" accept=".pdf,.jpg,.jpeg,.png" style="display: none;">
+          <div id="fileName" style="margin-top: 12px; color: #1976d2; font-size: 13px;"></div>
+        </div>
+        
+        <div id="historicoSection" class="form-group hidden">
+          <label class="form-label">Histórico de Edições</label>
+          <div id="historicoList"></div>
+        </div>
+        
+        <div class="modal-footer">
+          <button type="button" id="btnCancelar" class="btn-cancel">Cancelar</button>
+          <button type="submit" class="btn-submit">Salvar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL UPLOAD MASSIVO -->
+  <div id="modalMassivo" class="modal hidden">
+    <div class="modal-content" style="max-width: 700px;">
+      <h2 class="modal-header">📤 Upload Massivo de Exames</h2>
+      
+      <div style="background: #2a2a2a; padding: 16px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #1976d2;">
+        <p style="color: #fff; font-size: 14px; margin-bottom: 8px;">ℹ️ Upload Massivo</p>
+        <p style="color: #aaa; font-size: 13px; line-height: 1.5;">
+          Envie <strong>um único PDF com múltiplas guias/exames</strong> ou <strong>vários PDFs individuais</strong>.<br>
+          Ideal para lotes de exames da mesma categoria e período.
+        </p>
+      </div>
+      
+      <div class="form-group">
+        <label class="form-label">Categoria do Exame (aplicada para todos)</label>
+        <select id="massCategoria" class="form-select" required></select>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Mês</label>
+          <select id="massMes" class="form-select" required>
+            <option value="Janeiro">Janeiro</option>
+            <option value="Fevereiro">Fevereiro</option>
+            <option value="Março">Março</option>
+            <option value="Abril">Abril</option>
+            <option value="Maio">Maio</option>
+            <option value="Junho">Junho</option>
+            <option value="Julho">Julho</option>
+            <option value="Agosto">Agosto</option>
+            <option value="Setembro">Setembro</option>
+            <option value="Outubro">Outubro</option>
+            <option value="Novembro">Novembro</option>
+            <option value="Dezembro">Dezembro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Ano</label>
+          <input type="number" id="massAno" class="form-input" value="2025" required>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label class="form-label">Identificação do Lote (opcional)</label>
+        <input type="text" id="massLote" class="form-input" placeholder="Ex: Lote 001/2025, Remessa Janeiro, etc">
+      </div>
+      
+      <div class="form-group">
+        <label class="form-label">Selecionar PDF(s)</label>
+        <div class="upload-area" id="uploadAreaMassivo" style="padding: 60px 20px;">
+          <div class="upload-icon">📁</div>
+          <p style="font-size: 16px; font-weight: 500; margin-bottom: 8px;">Selecione um ou mais arquivos PDF</p>
+          <p style="font-size: 13px; color: #aaa;">• Um PDF com múltiplas guias</p>
+          <p style="font-size: 13px; color: #aaa;">• Ou vários PDFs individuais</p>
+          <p style="font-size: 13px; color: #aaa;">• Ou arquivos de imagem (JPG, PNG)</p>
+          <p style="font-size: 12px; color: #666; margin-top: 12px;">Máximo: 50 MB por arquivo</p>
+        </div>
+        <input type="file" id="massPDFs" accept=".pdf,.jpg,.jpeg,.png" multiple style="display: none;">
+      </div>
+      
+      <div id="arquivosSelecionados" style="max-height: 300px; overflow-y: auto; margin-top: 16px;"></div>
+      
+      <div class="modal-footer">
+        <button type="button" id="btnCancelarMassivo" class="btn-cancel">Cancelar</button>
+        <button type="button" id="btnEnviarMassivo" class="btn-submit" disabled>
+          📤 Enviar (<span id="countArquivos">0</span> arquivo(s))
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL VISUALIZAR PDF -->
+  <div id="modalPDF" class="modal hidden">
+    <div class="modal-content" style="max-width: 900px;">
+      <h2 class="modal-header">Visualizar Exame</h2>
+      <div id="pdfViewer" style="background: #2a2a2a; min-height: 500px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #666;">
+        <iframe id="pdfFrame" style="width: 100%; height: 600px; border: none; border-radius: 8px;"></iframe>
+      </div>
+      <div class="modal-footer">
+        <button id="btnFecharPDF" class="btn-cancel">Fechar</button>
+        <button id="btnBaixarPDF" class="btn-submit">📥 Baixar PDF</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ⭐ MODAL TROCAR SENHA (NOVO) -->
+  <div id="modalTrocarSenha" class="modal hidden">
+    <div class="modal-content" style="max-width: 500px;">
+      <h2 class="modal-header">🔑 Trocar Senha de Usuário</h2>
+      
+      <form id="formTrocarSenha">
+        <input type="hidden" id="usuarioIdSenha">
+        
+        <div class="form-group">
+          <label class="form-label">Usuário</label>
+          <input type="text" id="usuarioNomeSenha" class="form-input" disabled>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label">Nova Senha *</label>
+          <input type="password" id="novaSenha" class="form-input" placeholder="Mínimo 3 caracteres" required minlength="3">
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label">Confirmar Nova Senha *</label>
+          <input type="password" id="confirmarSenha" class="form-input" placeholder="Digite novamente" required minlength="3">
+        </div>
+        
+        <div class="modal-footer">
+          <button type="button" id="btnCancelarSenha" class="btn-cancel">Cancelar</button>
+          <button type="submit" class="btn-submit">💾 Salvar Nova Senha</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ⭐ MODAL VER TODOS (NOVO) -->
+  <div id="modalVerTodos" class="modal hidden">
+    <div class="modal-content" style="max-width: 500px;">
+      <h2 class="modal-header">👁️ Abrir Todos os PDFs</h2>
+      
+      <div style="background: #2a2a2a; padding: 20px; border-radius: 8px; margin-bottom: 20px; text-align: center;">
+        <p style="color: #fff; font-size: 48px; margin-bottom: 12px;">📄</p>
+        <p style="color: #fff; font-size: 16px; margin-bottom: 8px;">
+          Você está prestes a abrir <strong id="totalExamesAbrir">0</strong> PDFs
+        </p>
+        <p style="color: #aaa; font-size: 13px;">
+          ⚠️ Isso abrirá várias abas no navegador.<br>
+          Certifique-se de permitir pop-ups.
+        </p>
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" id="btnCancelarTodos" class="btn-cancel">Cancelar</button>
+        <button type="button" id="btnConfirmarTodos" class="btn-submit">✓ Abrir Todos</button>
+      </div>
+    </div>
+  </div>
+  <!-- ⭐ MODAL VISUALIZADOR DE PDFs COM NAVEGAÇÃO -->
+<div id="modalVisualizador" class="modal hidden">
+  <div class="modal-content" style="max-width: 95vw; max-height: 95vh; padding: 0; overflow: hidden;">
+    
+    <!-- HEADER COM NAVEGAÇÃO -->
+    <div style="background: #1b1b1b; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #2a2a2a;">
+      
+      <!-- BOTÃO ANTERIOR -->
+      <button id="btnAnterior" class="btn-nav">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+        </svg>
+        Anterior
+      </button>
+      
+      <!-- CONTADOR -->
+      <div style="text-align: center;">
+        <div style="color: #1976d2; font-size: 18px; font-weight: 500;">
+          📄 Exame <span id="exameAtual">1</span> de <span id="totalExames">0</span>
+        </div>
+        <div style="color: #aaa; font-size: 13px; margin-top: 4px;" id="infoExameAtual">
+          Carregando...
+        </div>
+      </div>
+      
+      <!-- BOTÃO PRÓXIMO -->
+      <button id="btnProximo" class="btn-nav">
+        Próximo
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+        </svg>
+      </button>
+      
+      <!-- BOTÃO FECHAR -->
+      <button id="btnFecharVisualizador" class="btn-icon" style="position: absolute; top: 16px; right: 16px;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+        </svg>
+      </button>
+    </div>
+    
+    <!-- ÁREA DO PDF -->
+    <div style="background: #0a0a0a; height: calc(95vh - 180px); display: flex; align-items: center; justify-content: center; position: relative;">
+      
+      <!-- LOADING -->
+      <div id="pdfLoading" class="hidden" style="position: absolute; z-index: 10;">
+        <div style="width: 48px; height: 48px; border: 4px solid #1976d2; border-top-color: transparent; border-radius: 50%; animation: spin 1s linear infinite;"></div>
+      </div>
+      
+      <!-- IFRAME DO PDF -->
+      <iframe 
+        id="pdfFrameVisualizador" 
+        style="width: 100%; height: 100%; border: none; background: white;"
+      ></iframe>
+    </div>
+    
+    <!-- FOOTER COM INFORMAÇÕES DO EXAME -->
+    <div style="background: #1b1b1b; padding: 16px 24px; border-top: 1px solid #2a2a2a;">
+      <div style="display: flex; gap: 24px; align-items: center; flex-wrap: wrap;">
+        
+        <!-- INFO PACIENTE -->
+        <div style="flex: 1; min-width: 200px;">
+          <div style="color: #aaa; font-size: 11px; margin-bottom: 4px;">PACIENTE</div>
+          <div style="color: white; font-size: 15px; font-weight: 500;" id="pacienteInfo">-</div>
+        </div>
+        
+        <!-- INFO DATA -->
+        <div style="flex: 1; min-width: 150px;">
+          <div style="color: #aaa; font-size: 11px; margin-bottom: 4px;">DATA DO EXAME</div>
+          <div style="color: white; font-size: 15px;" id="dataInfo">-</div>
+        </div>
+        
+        <!-- INFO CATEGORIA -->
+        <div style="flex: 1; min-width: 150px;">
+          <div style="color: #aaa; font-size: 11px; margin-bottom: 4px;">CATEGORIA</div>
+          <div style="color: white; font-size: 15px;" id="categoriaInfo">-</div>
+        </div>
+        
+        <!-- INFO EMPRESA -->
+        <div style="flex: 1; min-width: 150px;">
+          <div style="color: #aaa; font-size: 11px; margin-bottom: 4px;">EMPRESA</div>
+          <div style="color: white; font-size: 15px;" id="empresaInfo">-</div>
+        </div>
+        
+        <!-- BOTÃO BAIXAR -->
+        <button id="btnBaixarAtual" class="btn-submit" style="margin: 0;">
+          📥 Baixar PDF
+        </button>
+        
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- ESTILOS DO VISUALIZADOR -->
+<style>
+  .btn-nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: #2a2a2a;
+    color: white;
+    border: 1px solid #3a3a3a;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s;
+  }
+  
+  .btn-nav:hover:not(:disabled) {
+    background: #1976d2;
+    border-color: #1976d2;
+  }
+  
+  .btn-nav:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+  
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+</style>
+
+<!-- SCRIPT DO VISUALIZADOR -->
+<script>
+(function() {
+  let examesCarregados = [];
+  let indiceAtual = 0;
+  
+  // ========== ABRIR VISUALIZADOR ==========
+  window.abrirVisualizador = async function(exameId = null) {
+    showLoading('Carregando exames...');
+    
+    try {
+      // Busca todos os exames da categoria
+      const params = new URLSearchParams({
+        categoria: categoriaSelecionada._id
+      });
+      
+      if (filterMes.value) params.append('mes', filterMes.value);
+      if (empresaSelecionada) params.append('empresa', empresaSelecionada.id);
+      
+      const response = await fetch(`${API_URL}/exames?${params}`, {
+        headers: { 'Authorization': `Bearer ${TOKEN}` }
+      });
+      
+      if (!response.ok) throw new Error('Erro ao carregar exames');
+      
+      examesCarregados = await response.json();
+      
+      if (examesCarregados.length === 0) {
+        alert('Nenhum exame para visualizar');
+        return;
+      }
+      
+      // Se um exameId foi passado, encontra o índice dele
+      if (exameId) {
+        const index = examesCarregados.findIndex(e => e._id === exameId);
+        indiceAtual = index !== -1 ? index : 0;
+      } else {
+        indiceAtual = 0;
+      }
+      
+      // Atualiza contador
+      document.getElementById('totalExames').textContent = examesCarregados.length;
+      
+      // Mostra modal
+      document.getElementById('modalVisualizador').classList.remove('hidden');
+      
+      // Carrega primeiro PDF
+      carregarPDFAtual();
+      
+    } catch (err) {
+      console.error('Erro:', err);
+      alert('Erro ao carregar exames');
+    } finally {
+      hideLoading();
+    }
+  };
+  
+  // ========== CARREGAR PDF ATUAL ==========
+  function carregarPDFAtual() {
+    const exame = examesCarregados[indiceAtual];
+    
+    if (!exame || !exame.arquivos || exame.arquivos.length === 0) {
+      alert('Exame sem arquivo');
+      return;
+    }
+    
+    // Atualiza contador
+    document.getElementById('exameAtual').textContent = indiceAtual + 1;
+    
+    // Atualiza informações
+    document.getElementById('pacienteInfo').textContent = exame.paciente || 'Sem nome';
+    document.getElementById('dataInfo').textContent = new Date(exame.data).toLocaleDateString('pt-BR');
+    document.getElementById('categoriaInfo').textContent = exame.categoria.nome;
+    document.getElementById('empresaInfo').textContent = exame.empresa.nome;
+    document.getElementById('infoExameAtual').textContent = 
+      `${exame.paciente} • ${exame.categoria.nome} • ${exame.empresa.nome}`;
+    
+    // Atualiza botões de navegação
+    document.getElementById('btnAnterior').disabled = indiceAtual === 0;
+    document.getElementById('btnProximo').disabled = indiceAtual === examesCarregados.length - 1;
+    
+    // Mostra loading
+    document.getElementById('pdfLoading').classList.remove('hidden');
+    
+    // Carrega PDF no iframe
+    const arquivoId = exame.arquivos[0]._id;
+    const pdfUrl = `${API_URL}/exames/${exame._id}/arquivo/${arquivoId}?token=${TOKEN}`;
+    
+    const iframe = document.getElementById('pdfFrameVisualizador');
+    iframe.src = pdfUrl;
+    
+    // Esconde loading quando carregar
+    iframe.onload = () => {
+      document.getElementById('pdfLoading').classList.add('hidden');
+    };
+  }
+  
+  // ========== NAVEGAÇÃO ==========
+  document.getElementById('btnAnterior').addEventListener('click', () => {
+    if (indiceAtual > 0) {
+      indiceAtual--;
+      carregarPDFAtual();
+    }
+  });
+  
+  document.getElementById('btnProximo').addEventListener('click', () => {
+    if (indiceAtual < examesCarregados.length - 1) {
+      indiceAtual++;
+      carregarPDFAtual();
+    }
+  });
+  
+  // ========== ATALHOS DE TECLADO ==========
+  document.addEventListener('keydown', (e) => {
+    const modal = document.getElementById('modalVisualizador');
+    if (modal.classList.contains('hidden')) return;
+    
+    if (e.key === 'ArrowLeft') {
+      document.getElementById('btnAnterior').click();
+    } else if (e.key === 'ArrowRight') {
+      document.getElementById('btnProximo').click();
+    } else if (e.key === 'Escape') {
+      document.getElementById('btnFecharVisualizador').click();
+    }
+  });
+  
+  // ========== FECHAR ==========
+  document.getElementById('btnFecharVisualizador').addEventListener('click', () => {
+    document.getElementById('modalVisualizador').classList.add('hidden');
+    document.getElementById('pdfFrameVisualizador').src = '';
+    examesCarregados = [];
+    indiceAtual = 0;
+  });
+  
+  // ========== BAIXAR PDF ATUAL ==========
+  document.getElementById('btnBaixarAtual').addEventListener('click', () => {
+    const exame = examesCarregados[indiceAtual];
+    if (exame && exame.arquivos.length > 0) {
+      const arquivoId = exame.arquivos[0]._id;
+      const downloadUrl = `${API_URL}/exames/${exame._id}/arquivo/${arquivoId}?token=${TOKEN}`;
+      window.open(downloadUrl, '_blank');
+    }
+  });
+  
+})();
+</script>
+
+<script src="config.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,710 @@
+/* ============================================
+   CISMEPAR - Estilos CSS
+   ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Google Sans', 'Roboto', Arial, sans-serif;
+  background: #0a0a0a;
+  color: #e0e0e0;
+}
+
+/* ============================================
+   TELA DE LOGIN
+   ============================================ */
+
+.login-screen {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a237e 0%, #0d47a1 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.login-box {
+  background: white;
+  border-radius: 16px;
+  padding: 40px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+
+.login-logo {
+  width: 80px;
+  height: 80px;
+  background: #1976d2;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  font-weight: bold;
+  color: white;
+}
+
+.login-title {
+  text-align: center;
+  color: #333;
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.login-subtitle {
+  text-align: center;
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 32px;
+}
+
+.input-group {
+  margin-bottom: 16px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border 0.3s;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: #1976d2;
+}
+
+.btn-login {
+  width: 100%;
+  padding: 14px;
+  background: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-login:hover {
+  background: #1565c0;
+}
+
+.error-msg {
+  background: #ffebee;
+  color: #c62828;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+.demo-hint {
+  text-align: center;
+  color: #999;
+  font-size: 12px;
+  margin-top: 16px;
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background: #1b1b1b;
+  border-bottom: 1px solid #2a2a2a;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  z-index: 100;
+}
+
+.header-logo {
+  width: 40px;
+  height: 40px;
+  background: #1976d2;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: white;
+  margin-right: 12px;
+}
+
+.header-title {
+  font-size: 20px;
+  font-weight: 400;
+  color: white;
+}
+
+.header-breadcrumb {
+  font-size: 12px;
+  color: #aaa;
+  margin-top: 2px;
+}
+
+.header-actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-header {
+  padding: 8px 16px;
+  background: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.3s;
+}
+
+.btn-header:hover {
+  background: #1565c0;
+}
+
+.btn-icon {
+  background: transparent;
+  border: none;
+  color: #aaa;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-icon:hover {
+  background: #2a2a2a;
+  color: white;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-left: 12px;
+  border-left: 1px solid #2a2a2a;
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  background: #555;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 500;
+}
+
+.user-name {
+  font-size: 14px;
+  color: white;
+}
+
+.user-role {
+  font-size: 12px;
+  color: #aaa;
+}
+
+.btn-back {
+  background: transparent;
+  border: none;
+  color: #aaa;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.btn-back:hover {
+  background: #2a2a2a;
+  color: white;
+}
+
+/* ============================================
+   MAIN CONTENT
+   ============================================ */
+
+.main-content {
+  padding: 88px 24px 24px;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+/* ============================================
+   CARDS DE EMPRESA
+   ============================================ */
+
+.empresa-card {
+  background: #1b1b1b;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.empresa-card:hover {
+  border-color: #1976d2;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+
+.empresa-header {
+  height: 120px;
+  background: linear-gradient(135deg, #1976d2, #0d47a1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  font-weight: bold;
+  color: white;
+}
+
+.empresa-body {
+  padding: 16px;
+}
+
+.empresa-name {
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
+  margin-bottom: 4px;
+}
+
+.empresa-info {
+  font-size: 13px;
+  color: #aaa;
+}
+
+/* ============================================
+   CARDS DE CATEGORIA
+   ============================================ */
+
+.categoria-card {
+  background: #1b1b1b;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.categoria-card:hover {
+  border-color: #1976d2;
+  transform: translateY(-4px);
+}
+
+.categoria-header {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: white;
+}
+
+.categoria-body {
+  padding: 16px;
+}
+
+.categoria-name {
+  font-size: 15px;
+  font-weight: 500;
+  color: white;
+  margin-bottom: 4px;
+}
+
+.categoria-count {
+  font-size: 13px;
+  color: #aaa;
+}
+
+/* ============================================
+   LISTA DE EXAMES
+   ============================================ */
+
+.exame-item {
+  background: #1b1b1b;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 12px;
+  transition: all 0.3s;
+}
+
+.exame-item:hover {
+  border-color: #1976d2;
+  background: #222;
+}
+
+.exame-icon {
+  width: 48px;
+  height: 48px;
+  background: #c62828;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+.exame-info {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.exame-paciente {
+  font-size: 15px;
+  font-weight: 500;
+  color: white;
+  margin-bottom: 4px;
+}
+
+.exame-tipo {
+  font-size: 13px;
+  color: #aaa;
+}
+
+.exame-meta {
+  font-size: 12px;
+  color: #777;
+  margin-top: 4px;
+}
+
+.exame-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-small {
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.3s;
+}
+
+.btn-view {
+  background: #1976d2;
+  color: white;
+}
+
+.btn-view:hover {
+  background: #1565c0;
+}
+
+.btn-edit {
+  background: #2a2a2a;
+  color: #aaa;
+}
+
+.btn-edit:hover {
+  background: #333;
+  color: white;
+}
+
+.btn-delete {
+  background: #2a2a2a;
+  color: #aaa;
+}
+
+.btn-delete:hover {
+  background: #c62828;
+  color: white;
+}
+
+/* ============================================
+   MODAL
+   ============================================ */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  padding: 20px;
+}
+
+.modal-content {
+  background: #1b1b1b;
+  border-radius: 16px;
+  padding: 32px;
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-header {
+  font-size: 20px;
+  font-weight: 500;
+  color: white;
+  margin-bottom: 24px;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-label {
+  display: block;
+  font-size: 13px;
+  color: #aaa;
+  margin-bottom: 6px;
+}
+
+.form-input, .form-select, .form-textarea {
+  width: 100%;
+  padding: 12px;
+  background: #2a2a2a;
+  border: 1px solid #3a3a3a;
+  border-radius: 8px;
+  color: white;
+  font-size: 14px;
+}
+
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  outline: none;
+  border-color: #1976d2;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.upload-area {
+  border: 2px dashed #3a3a3a;
+  border-radius: 8px;
+  padding: 40px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.upload-area:hover {
+  border-color: #1976d2;
+  background: #222;
+}
+
+.upload-icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+.modal-footer {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.btn-cancel {
+  flex: 1;
+  padding: 12px;
+  background: #2a2a2a;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-cancel:hover {
+  background: #333;
+}
+
+.btn-submit {
+  flex: 1;
+  padding: 12px;
+  background: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.btn-submit:hover {
+  background: #1565c0;
+}
+
+.btn-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ============================================
+   FILTROS
+   ============================================ */
+
+.filter-select {
+  padding: 10px 16px;
+  background: #1b1b1b;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* ============================================
+   HISTÓRICO
+   ============================================ */
+
+.historico-item {
+  padding: 12px;
+  background: #2a2a2a;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  font-size: 13px;
+  color: #aaa;
+}
+
+.historico-user {
+  color: #1976d2;
+  font-weight: 500;
+}
+
+/* ============================================
+   ADMIN PANEL
+   ============================================ */
+
+.admin-section {
+  background: #1b1b1b;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.admin-title {
+  font-size: 18px;
+  font-weight: 500;
+  color: white;
+  margin-bottom: 16px;
+}
+
+.categoria-list {
+  display: grid;
+  gap: 8px;
+}
+
+.categoria-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  background: #2a2a2a;
+  border-radius: 8px;
+}
+
+.categoria-list-name {
+  color: white;
+  font-size: 14px;
+}
+
+/* ============================================
+   UTILITÁRIOS
+   ============================================ */
+
+.hidden {
+  display: none !important;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666;
+}
+
+.empty-icon {
+  font-size: 64px;
+  margin-bottom: 16px;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .exame-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .exame-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+  
+  .header-actions {
+    gap: 8px;
+  }
+  
+  .btn-header {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}
